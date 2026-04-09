@@ -1,0 +1,28 @@
+dst:
+  auth:
+    dev-mode: true  # 개발 환경에서는 인증 우회
+
+spring:
+  datasource-dst:
+    driver-class-name: org.postgresql.Driver
+    jdbcUrl: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  datasource-rino:
+    jdbcUrl: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  datasource-xroshot:
+    jdbcUrl: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  datasource-xeus:
+    jdbcUrl: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver

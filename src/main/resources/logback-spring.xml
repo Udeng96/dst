@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration>
+
+<configuration scan="true" scanPeriod="1 seconds">
+<!--    <include resource="org/springframework/boot/logging/logback/base.xml" />-->
+
+    <!-- 로그 파일을 적재할 파일 이름을 지정 -->
+    <property name="LOG_FILE_NAME" value="log"/>
+
+    <!-- TEXT_FILE 어펜더 정의 -->
+    <!-- 운영 환경에 적합 -->
+    <!-- 일자별로 로그 파일을 적재하되, 100MB를 초과하면 로그 파일 분할 -->
+    <!-- 최대 7일치를 보관하고 나머지는 삭제, 최대 1GB를 초과해도 나머지를 삭제 -->
+    <appender name="TEXT_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${DST_HOME}/logs/${LOG_FILE_NAME}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${DST_HOME}/${LOG_FILE_NAME}_%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d %-4relative [%method:%line] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="frameworkconsole" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%-5p: [%d{yyyy-MM-dd HH:mm:ss:SSS}] %c{36} - %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.springframework" additivity="false">
+        <level value="info" />
+        <appender-ref ref="frameworkconsole" />
+    </logger>
+
+    <logger name="com.eseict.dst" additivity="false">
+        <level value="info" />
+        <appender-ref ref="frameworkconsole" />
+    </logger>
+
+    <!-- INFO 레벨 이하 로그는 TEXT_FILE 어펜더로 로그 적재 -->
+    <root>
+        <appender-ref ref="TEXT_FILE"/>
+    </root>
+
+</configuration>

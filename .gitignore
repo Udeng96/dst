@@ -1,0 +1,37 @@
+.gradle/
+/build/
+dst.iml
+
+src/main/web/build/
+static/assets/
+src/main/web/node_modules/
+src/main/web/pnpm-lock.yaml
+logs/
+
+# IDE
+.idea/
+.vscode/
+
+# Gradle
+caches/
+/wrapper/
+daemon/
+jdks/
+native/
+kotlin-profile/
+
+# OS
+.DS_Store
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Package manager
+package-lock.json
+
+# Dump & log files
+*.dump
+*.log
+.tmp/

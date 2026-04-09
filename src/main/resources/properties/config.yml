@@ -1,0 +1,7 @@
+mrs:
+  ip: ${MRS_IP}
+  port: ${MRS_PORT}
+
+eas:
+  ip: ${EAS_IP}
+  port: ${EAS_PORT}

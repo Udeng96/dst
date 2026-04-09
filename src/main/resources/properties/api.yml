@@ -1,0 +1,39 @@
+dst:
+  apis:
+    oms:
+      url: ${OMS_URL}
+      subUrls:
+        user: /api/user/info
+        logout: /api/user/logout
+        loginPage: /login/getLoginView
+        extendToken: /api/user/extendToken
+        chkTokenAlive: /api/user/chkTokenAlive
+      headers:
+        systemKey: DST
+        secret: ${OMS_SECRET}
+
+    vworld:
+      url: http://api.vworld.kr
+      subUrls:
+        coordToAddr: /req/address
+      params:
+        coordToAddrService: address
+        coordToAddrReq: getAddress
+        version: 2.0
+        crs: epsg:4326
+        format: json
+        type: both
+        zipcode: true
+        simple: false
+        key: ${VWORLD_API_KEY}
+
+cryptsvr:
+  api:
+    address: ${CRYPTSVR_URL}
+  encrypt: /encrypt
+  decrypt: /decrypt
+  system:
+    key: ${CRYPTSVR_SYSTEM_KEY}
+    secret: ${CRYPTSVR_SECRET}
+  crypt:
+    type: ARIA

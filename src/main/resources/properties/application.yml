@@ -1,0 +1,49 @@
+spring:
+  devtools:
+    restart:
+      enabled: false
+    livereload:
+      enabled: false
+  output:
+    ansi:
+      enabled: always
+  thymeleaf:
+    prefix: classpath:/static/
+    suffix: .html
+  jpa:
+    hibernate:
+      ddl-auto: none
+      use-new-id-generator-mappings: false
+server:
+  port: 22223
+  servlet:
+    context-path: /dst
+    session:
+      timeout: 3600m
+  error:
+    whitelabel:
+      enabled: false
+    path: /error
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    root: info
+
+socket:
+  port:
+    rino: 39999
+
+video:
+  expireMinute: 10
+
+dst:
+  auth:
+    dev-mode: false  # 개발 시 true로 변경하여 인증 우회 (운영 배포 시 반드시 false)
+  external-uri: ${DST_EXTERNAL_URI}  # 외부 공유 링크 생성에 사용하는 운영 URI
+  home: ${DST_HOME}  # 파일 저장 루트 디렉토리 (환경변수 DST_HOME)
+
+sms:
+  snd-mn: ${SMS_SND_MN}  # SMS 발신 번호
+
+event:
+  default-from: 20250501  # 이벤트 조회 기본 시작일 (yyyyMMdd)
