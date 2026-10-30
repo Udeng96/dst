@@ -11,14 +11,8 @@ description = 'dst'
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
-    maven {
-        url 'http://210.97.42.250:5001/nexus/content/groups/public'
-        name 'esePublic'
-        allowInsecureProtocol true
-    }
     mavenCentral()
     mavenLocal()
-    maven { url 'https://code.lds.org/nexus/content/groups/main-repo' }
 }
 
 configurations {
